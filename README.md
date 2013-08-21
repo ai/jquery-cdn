@@ -1,1 +1,1 @@
-# jQuery for Ruby apps
+# Latest jQuery for Ruby apps
