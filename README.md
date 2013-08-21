@@ -1,0 +1,1 @@
+# jQuery for Ruby apps
