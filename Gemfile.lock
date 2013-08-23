@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jquery-cdn (2.0.0)
+    jquery-cdn (2.0.3)
       sprockets (>= 2)
 
 GEM

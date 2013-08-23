@@ -4,7 +4,7 @@ require './lib/jquery-cdn/version'
 
 Gem::Specification.new do |s|
   s.name        = 'jquery-cdn'
-  s.version     = JqueryCDN::VERSION
+  s.version     = JqueryCdn::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = 'Andrey "A.I." Sitnik'
   s.email       = 'andrey@sitnik.ru'
