@@ -30,7 +30,7 @@ task :update do
   def update_version(tag)
     version_file = Pathname(__FILE__).dirname.join('lib/jquery-cdn/version.rb')
     version_file.open('w') do |io|
-      io << "module JqueryCDN\n  VERSION = \"#{tag}\"\nend\n"
+      io << "module JqueryCdn\n  VERSION = \"#{tag}\"\nend\n"
     end
   end
 

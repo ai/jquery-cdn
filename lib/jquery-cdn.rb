@@ -19,10 +19,7 @@ module JqueryCdn
   end
 
   # Return URL to local or CDN jQuery, depend on `env`.
-  def self.url(env = nil, cdn = nil)
-    env ||= :production
-    cdn ||= :google
-
+  def self.url(env, cdn)
     if env == :production
       raise ArgumentError, "Unknown CDN #{cdn}" unless URL.has_key? cdn
       URL[cdn]
@@ -31,22 +28,42 @@ module JqueryCdn
     end
   end
 
+  # Set proc to generate locale jQuery URL
   def self.local_url=(proc)
     @local_url = proc
   end
 
-  def self.script_tag(attrs)
-    '<script' + attrs.map { |k, v| " #{k}=\"#{v}\"" }.join + '></script>'
+  # Return <script> tag
+  def self.script_tag(attrs, body = '')
+    if attrs.is_a? String
+      body  = attrs
+      attrs = { }
+    end
+
+    attrs = attrs.map { |key, value|
+      if value == true
+        " #{key}"
+      else
+        " #{key}=\"#{value}\""
+      end
+    }.join
+    "<script#{ attrs }>#{ body }</script>"
   end
 
-  # Return <script> tag with jQuery.
+  # Return <script> tags with jQuery.
   def self.include_jquery(options = { })
-    env = options.delete(:env)
-    cdn = options.delete(:cdn)
+    env = options.delete(:env) || :production
+    cdn = options.delete(:cdn) || :google
 
     options[:src] = url(env, cdn)
 
-    script_tag(options)
+    script_tag(options) + if not options[:defer] and env == :production
+      fallback = include_jquery(options.merge(env: :development))
+      escaped  = "unescape('#{ fallback.gsub('<', '%3C') }')"
+      script_tag("window.jQuery || document.write(#{ escaped })")
+    else
+      ''
+    end
   end
 end
 
