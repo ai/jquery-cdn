@@ -6,7 +6,7 @@ module JqueryCdn
   module Helpers
     def include_jquery(options = { })
       options[:env] ||= Rails.env.development?
-      JqueryCdn.local_url = proc { javascript_path('jquery.js') }
+      JqueryCdn.local_url = proc { javascript_path('jquery-cdn.js') }
       JqueryCdn.include_jquery(options).html_safe
     end
   end

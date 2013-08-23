@@ -17,7 +17,7 @@ task :update do
   def fetch(tag)
     url    = "http://ajax.googleapis.com/ajax/libs/jquery/#{tag}/jquery.js"
     assets = Pathname(__FILE__).dirname.join('vendor/assets')
-    path   = assets.join('javascripts/jquery.js')
+    path   = assets.join('javascripts/jquery-cdn.js')
 
     path.dirname.mkpath
     path.open('w') do |io|

@@ -53,5 +53,5 @@ end
 if defined? ::Rails
   require Pathname(__FILE__).dirname.join('jquery-cdn/railties').to_s
 else
-  JqueryCdn.local_url = proc { '/assets/jquery.js' }
+  JqueryCdn.local_url = proc { '/assets/jquery-cdn.js' }
 end
