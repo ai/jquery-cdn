@@ -55,8 +55,8 @@ module JqueryCdn
   # Return <script> tags with jQuery.
   def self.include_jquery(options = { })
     attrs = options.dup
-    env   = attrs.delete(:env)     || :production
-    cdn   = attrs.delete(:cdn)     || :google
+    env   = attrs.delete(:env) || :production
+    cdn   = attrs.delete(:cdn) || :google
 
     attrs[:src] = url(env, cdn)
 

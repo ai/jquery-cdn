@@ -13,7 +13,8 @@ module JqueryCdn
   end
 
   class Railtie < Rails::Railtie
-    initializer 'jquery-cdn.action_view' do |app|
+    initializer 'jquery-cdn' do |app|
+      # Add include_jquery helper
       ActiveSupport.on_load(:action_view) do
         include JqueryCdn::RailsHelpers
       end
@@ -25,6 +26,9 @@ module JqueryCdn
 
         Rails.application.assets.prepend_path(vendor)
       end
+
+      # Precompile all JS/CSS in root of app assets dirs.
+      app.config.assets.precompile << 'jquery.js'
     end
   end
 end
