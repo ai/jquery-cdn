@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email       = 'andrey@sitnik.ru'
   s.license     = 'MIT'
   s.homepage    = 'https://github.com/ai/jquery-cdn'
-  s.summary     = 'Best way to use latest jQuery in Ruby app.'
+  s.summary     = 'Best way to use latest jQuery in Ruby app'
 
   s.add_dependency 'sprockets', '>= 2'
 
