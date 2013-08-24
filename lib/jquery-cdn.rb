@@ -52,12 +52,13 @@ module JqueryCdn
 
   # Return <script> tags with jQuery.
   def self.include_jquery(options = { })
-    env = options.delete(:env) || :production
-    cdn = options.delete(:cdn) || :google
+    attrs = options.dup
+    env   = attrs.delete(:env)     || :production
+    cdn   = attrs.delete(:cdn)     || :google
 
-    options[:src] = url(env, cdn)
+    attrs[:src] = url(env, cdn)
 
-    script_tag(options) + if not options[:defer] and env == :production
+    script_tag(attrs) + if not options[:defer] and env == :production
       fallback = include_jquery(options.merge(env: :development))
       escaped  = "unescape('#{ fallback.gsub('<', '%3C') }')"
       script_tag("window.jQuery || document.write(#{ escaped })")
@@ -70,5 +71,5 @@ end
 if defined? ::Rails
   require Pathname(__FILE__).dirname.join('jquery-cdn/railties').to_s
 else
-  JqueryCdn.local_url = proc { '/assets/jquery-cdn.js' }
+  JqueryCdn.local_url = proc { '/assets/jquery.js' }
 end

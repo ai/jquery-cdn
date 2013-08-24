@@ -1,25 +1,32 @@
 #!/usr/bin/env rake
 
-require "bundler/gem_tasks"
+require 'bundler/gem_tasks'
 
-desc "Update assets from jQuery repo"
+desc 'Update assets from jQuery repo'
 task :update do
-  require "json"
-  require "httpclient"
+  require 'json'
+  require 'httpclient'
+
+  def asset(file)
+    Pathname(__FILE__).dirname.join('vendor/assets/javascripts').join(file)
+  end
 
   def github_tags(repo)
     http = HTTPClient.new
     body = http.get("https://api.github.com/repos/#{repo}/tags").body
     response = JSON.parse(body)
-    response.map { |i| i['name'] }.reject { |i| i =~ /rc|beta/ }.sort
+    response.reject { |i| i['name'] =~ /rc|beta|\+/ }.
+             map    { |i| Gem::Version.new(i['name']) }.
+             sort
   end
 
   def fetch(tag)
-    url    = "http://ajax.googleapis.com/ajax/libs/jquery/#{tag}/jquery.js"
-    assets = Pathname(__FILE__).dirname.join('vendor/assets')
-    path   = assets.join('javascripts/jquery-cdn.js')
+    url  = "http://ajax.googleapis.com/ajax/libs/jquery/#{tag}/jquery.js"
+    path = asset("jquery.js")
 
+    path.dirname.rmtree if path.dirname.exist?
     path.dirname.mkpath
+
     path.open('w') do |io|
       http = HTTPClient.new
       http.transparent_gzip_decompression = true

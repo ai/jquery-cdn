@@ -7,7 +7,7 @@ module JqueryCdn
     # Return <script> tags to add jQuery to Rails
     def include_jquery(options = { })
       options[:env] ||= Rails.env.development?
-      JqueryCdn.local_url = proc { javascript_path('jquery-cdn.js') }
+      JqueryCdn.local_url = proc { javascript_path("jquery.js") }
       JqueryCdn.include_jquery(options).html_safe
     end
   end
