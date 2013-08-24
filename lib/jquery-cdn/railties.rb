@@ -3,8 +3,8 @@ module JqueryCdn
   class Engine < ::Rails::Engine
   end
 
-  module Helpers
-    # Return <script> tags to add jQuery to Rails
+  module RailsHelpers
+    # Return <script> tags to add jQuery in Rails
     def include_jquery(options = { })
       options[:env] ||= Rails.env.development?
       JqueryCdn.local_url = proc { javascript_path("jquery.js") }
@@ -15,7 +15,7 @@ module JqueryCdn
   class Railtie < Rails::Railtie
     initializer 'jquery-cdn.action_view' do |app|
       ActiveSupport.on_load(:action_view) do
-        include JqueryCdn::Helpers
+        include JqueryCdn::RailsHelpers
       end
 
       # Ensure that we before jquery-rails to fix name conflict

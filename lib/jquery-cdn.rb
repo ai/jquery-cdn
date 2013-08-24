@@ -1,7 +1,9 @@
 require 'pathname'
 require 'cgi'
 
-require Pathname(__FILE__).dirname.join('jquery-cdn/version').to_s
+lib = Pathname(__FILE__).dirname.join('jquery-cdn')
+require lib.join('version').to_s
+require lib.join('helpers').to_s
 
 module JqueryCdn
   URL = {
@@ -14,7 +16,7 @@ module JqueryCdn
 
   # Add assets paths to standalone Sprockets environment.
   def self.install(sprockets)
-    root = Pathname(__FILE__).dirname.join('..')
+    root = Pathname(__FILE__).dirname.join('..').expand_path
     sprockets.append_path(root.join('vendor/assets/javascripts'))
   end
 
@@ -69,7 +71,7 @@ module JqueryCdn
 end
 
 if defined? ::Rails
-  require Pathname(__FILE__).dirname.join('jquery-cdn/railties').to_s
+  require lib.join('railties').to_s
 else
   JqueryCdn.local_url = proc { '/assets/jquery.js' }
 end
