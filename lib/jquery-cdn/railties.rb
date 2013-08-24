@@ -17,6 +17,14 @@ module JqueryCdn
       ActiveSupport.on_load(:action_view) do
         include JqueryCdn::Helpers
       end
+
+      # Ensure that we before jquery-rails to fix name conflict
+      ActiveSupport.on_load(:after_initialize) do
+        root   = Pathname(__FILE__).dirname.join('../..').expand_path
+        vendor = root.join('vendor/assets/javascripts')
+
+        Rails.application.assets.prepend_path(vendor)
+      end
     end
   end
 end
