@@ -1,4 +1,4 @@
-# Latest jQuery for Ruby apps
+# Beast way to load latest jQuery in Ruby
 
 Load jQuery from CDN in production and use local copy in development.
 jQuery CDN supports Ruby on Rails, Sinatra ans other non-Rails environments
