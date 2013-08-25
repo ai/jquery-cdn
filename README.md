@@ -1,12 +1,11 @@
 # Latest jQuery for Ruby apps
 
 Load jQuery from CDN in production and use local copy in development.
+jQuery CDN supports Ruby on Rails, Sinatra ans other non-Rails environments
+with Sprockets.
 
 Instead of `jquery-rails` this gem doesn’t have `jquery-ujs`, so contain latest
 version of jQuery.
-
-jQuery CDN supports Ruby on Rails, Sinatra ans other non-Rails environments
-with Sprockets.
 
 ## Features
 
@@ -22,10 +21,8 @@ Public CDN is a best way to serve jQuery:
   be made to a single host. Using CDN for jQuery offloads a big one.
 
 In development gem will use local copy of jQuery, so you can develop app
-in airplane without Internet.
-
-In production gem will use CDN, but if it will down, gem will automatically
-fallback to bundled jQuery.
+in airplane without Internet. In production gem will use CDN,
+but if it will down, gem will automatically fallback to bundled jQuery.
 
 ### Latest version of jQuery
 
@@ -33,13 +30,13 @@ Instead of `jquery-rails` this gem always contain latest version of jQuery,
 because it doesn’t need to test compatibility with UJS adapter.
 
 For example, `jquery-rails`
-[doesn’t have](https://github.com/rails/jquery-rails/issues/124)
-jQuery 2 support even after 4 months.
+[doesn’t support](https://github.com/rails/jquery-rails/issues/124)
+jQuery 2 even after 4 months.
 
 ### Gem version is same that jQuery
 
 Instead of `jquery-rails`, this gem versions tell exactly what jQuery is inside.
-So, it is easy to maintain `Gemfile`:
+`Gemfile` maintaining will be much easy:
 
 ```ruby
 gem 'jquery-cdn', '1.10.2' # Use jQuery 1.10.2
@@ -49,7 +46,7 @@ gem 'jquery-cdn', '1.10.2' # Use jQuery 1.10.2
 
 ### Ruby on Rails
 
-Add `jquery-cdn` gem to your Gemfile:
+Add `jquery-cdn` gem to your `Gemfile`:
 
 ```ruby
 gem 'jquery-cdn'
@@ -75,7 +72,7 @@ Call `include_jquery` helper in layout:
 ### Ruby
 
 If you use Sinatra or other non-Rails frameworks with Sprockets,
-just connect your Sprockets environment with jQuery CDN:
+just connect your Sprockets environment to jQuery CDN:
 
 ```ruby
 require 'jquery-cdn'
@@ -87,13 +84,13 @@ end
 JqueryCdn.install(assets)
 ```
 
-Set URL to get local jQuery (by default, `/assets/jquery.js`):
+Set local jQuery URL (by default, `/assets/jquery.js`):
 
 ```ruby
 JqueryCdn.local_url = proc { '/jquery.js' }
 ```
 
-Add helpers from `JqueryCdn::Helpers` module to your app:
+Include `JqueryCdn::Helpers` module to your app:
 
 ```ruby
 class YourApp < Sinatra::Base
@@ -114,7 +111,7 @@ And use `include_jquery` helper with `env` option:
 
 Helper `include_jquery` has 2 options:
 
-* `env`: CDN will be used only on `:production` environment. Rails helper can
+* `env`: CDN will be used only in `:production` environment. Rails helper can
   detect it automatically. By default, `:production`.
 * `cdn`: CDN to use. By default, `:google`.
 
