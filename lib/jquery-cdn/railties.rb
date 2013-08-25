@@ -14,17 +14,14 @@ module JqueryCdn
 
   class Railtie < Rails::Railtie
     initializer 'jquery-cdn' do |app|
+      # Ensure that we before jquery-rails to fix name conflict
+      root   = Pathname(__FILE__).dirname.join('../..').expand_path
+      vendor = root.join('vendor/assets/javascripts')
+      Rails.application.assets.prepend_path(vendor)
+
       # Add include_jquery helper
       ActiveSupport.on_load(:action_view) do
         include JqueryCdn::RailsHelpers
-      end
-
-      # Ensure that we before jquery-rails to fix name conflict
-      ActiveSupport.on_load(:after_initialize) do
-        root   = Pathname(__FILE__).dirname.join('../..').expand_path
-        vendor = root.join('vendor/assets/javascripts')
-
-        Rails.application.assets.prepend_path(vendor)
       end
 
       # Precompile all JS/CSS in root of app assets dirs.
