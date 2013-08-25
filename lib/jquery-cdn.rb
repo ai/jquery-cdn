@@ -70,8 +70,5 @@ module JqueryCdn
   end
 end
 
-if defined? ::Rails
-  require lib.join('railties').to_s
-else
-  JqueryCdn.local_url = proc { '/assets/jquery.js' }
-end
+JqueryCdn.local_url = proc { '/assets/jquery.js' }
+require lib.join('railties').to_s if defined? ::Rails
