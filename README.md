@@ -5,6 +5,9 @@ Load jQuery from CDN in production and use local copy in development.
 Instead of `jquery-rails` this gem doesn’t have `jquery-ujs`, so contain latest
 version of jQuery.
 
+jQuery CDN supports Ruby on Rails, Sinatra ans other non-Rails environments
+with Sprockets.
+
 ## Features
 
 ### Load from CDN
