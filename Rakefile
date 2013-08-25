@@ -42,7 +42,7 @@ task :update do
   end
 
   puts "Fetching tags"
-  tag = github_tags('jquery/jquery').last
+  tag = github_tags('jquery/jquery').select { |i| i.to_s =~ /^1\./ }.last
 
   require './lib/jquery-cdn/version'
   if tag.to_s == JqueryCdn::VERSION
