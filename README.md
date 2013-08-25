@@ -90,6 +90,14 @@ Set URL to get local jQuery (by default, `/assets/jquery.js`):
 JqueryCdn.local_url = proc { '/jquery.js' }
 ```
 
+Add helpers from `JqueryCdn::Helpers` module to your app:
+
+```ruby
+class YourApp < Sinatra::Base
+  helpers { include JqueryCdn::Helpers }
+end
+```
+
 And use `include_jquery` helper with `env` option:
 
 ```haml
