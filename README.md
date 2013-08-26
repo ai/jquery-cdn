@@ -44,6 +44,11 @@ Instead of `jquery-rails`, this gem versions tell exactly what jQuery is inside.
 gem 'jquery-cdn', '1.10.2' # Use jQuery 1.10.2
 ```
 
+### Sinatra and plain Ruby support
+
+You can use jQuery CDN with Ruby on Rails, Sinatra or any other Ruby environment
+with Sprockets
+
 ## How To
 
 ### Ruby on Rails
