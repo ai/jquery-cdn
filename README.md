@@ -1,15 +1,15 @@
 # Best way to load latest jQuery in Ruby
 
 Load jQuery from CDN in production and use local copy in development.
-jQuery CDN supports Ruby on Rails, Sinatra ans other non-Rails environments
+jQuery-CDN supports Ruby on Rails, Sinatra and other non-Rails environments
 with Sprockets.
 
-Another gem [jquery-rails](https://github.com/rails/jquery-rails) contain also
-UJS adapter for jQuery. So it need to test any jQuery updates and release
+Another gem [jquery-rails](https://github.com/rails/jquery-rails) contains also
+UJS adapter for jQuery. So it need to test any jQuery updates and will release
 new jQuery version after few month (for example, there is still no jQuery 2
-for `jquery-ujs`). If you don’t need UJS, this gem will be better to you.
+in `jquery-ujs`). If you don’t need UJS, this gem will be better for you.
 
-jQuery CDN now has 2 branches: with jQuery 2.x and 1.x.
+jQuery-CDN now has 2 branches: with jQuery 2.x and 1.x.
 
 ## Features
 
@@ -48,7 +48,7 @@ gem 'jquery-cdn', '1.10.2' # Use jQuery 1.10.2
 
 ### Sinatra and plain Ruby support
 
-You can use jQuery CDN with Ruby on Rails, Sinatra or any other Ruby environment
+You can use jQuery-CDN with Ruby on Rails, Sinatra or any other Ruby environment
 with Sprockets.
 
 ## How To
@@ -81,7 +81,7 @@ Call `include_jquery` helper in layout:
 ### Ruby
 
 If you use Sinatra or other non-Rails frameworks with Sprockets,
-just connect your Sprockets environment to jQuery CDN:
+just connect your Sprockets environment to jQuery-CDN:
 
 ```ruby
 require 'jquery-cdn'
@@ -157,7 +157,7 @@ scripts.
     = javascript_include_tag('application', defer: true)
 ```
 
-Note, that unfortunately jQuery CDN can’t use fallback with `defer` now,
+Note, that unfortunately jQuery-CDN can’t use fallback with `defer` now,
 because this options can’t work with inline scripts.
 
 ### Fallback
@@ -170,5 +170,5 @@ According to Murphy’s Law, even Google CDN may down. So when you write
 <script>window.jQuery || document.write(unescape('%3Cscript src="/assets/jquery.js">%3C/script>'))</script>
 ```
 
-This HTML checks, is jQuery normally loaded from Google. On any problems it will load
-local copy of jQuery.
+This HTML checks, is jQuery normally loaded from Google. On any problems it will
+load local copy of jQuery.
