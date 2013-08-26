@@ -22,7 +22,7 @@ Public CDN is a best way to serve jQuery:
 * **Caching**: CDN is used so widely that potentially your users may not need
   to download jQuery at all.
 * **Parallelism**: browsers have a limitation on how many connections can
-  be made to a single host. Using CDN for jQuery offloads a big one.
+  be made to a single host. Using CDN for jQuery offloads a big one.
 
 In development gem will use local copy of jQuery, so you can develop app
 in airplane without Internet. In production gem will use CDN,
@@ -121,7 +121,7 @@ And use `include_jquery` helper with `env` option:
 Helper `include_jquery` has 2 options:
 
 * `env`: CDN will be used only in `:production` environment. Rails helper can
-  detect it automatically. By default, `:production`.
+  detect it automatically. By default, `:production`.
 * `cdn`: CDN to use. By default, `:google`.
 
 Other options will be used as `<script>` attributes.
