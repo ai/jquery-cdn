@@ -6,8 +6,10 @@ with Sprockets.
 
 Another gem [jquery-rails](https://github.com/rails/jquery-rails) contain also
 UJS adapter for jQuery. So it need to test any jQuery updates and release
-new jQuery version after few month. If you don’t need UJS, this gem will be
-better to you.
+new jQuery version after few month (for example, there is still no jQuery 2
+for `jquery-ujs`). If you don’t need UJS, this gem will be better to you.
+
+jQuery CDN now has 2 branches: with jQuery 2.x and 1.x.
 
 ## Features
 
@@ -47,7 +49,7 @@ gem 'jquery-cdn', '1.10.2' # Use jQuery 1.10.2
 ### Sinatra and plain Ruby support
 
 You can use jQuery CDN with Ruby on Rails, Sinatra or any other Ruby environment
-with Sprockets
+with Sprockets.
 
 ## How To
 
