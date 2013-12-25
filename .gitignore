@@ -5,3 +5,4 @@ pkg/
 build/
 
 .bundle
+Gemfile.lock
