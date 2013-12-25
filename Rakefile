@@ -44,13 +44,18 @@ task :update do
   puts "Fetching tags"
   tag = github_tags('jquery/jquery').last
 
-  puts "Load jQuery #{tag}"
-  fetch(tag)
+  require './lib/jquery-cdn/version'
+  if tag.to_s == JqueryCdn::VERSION
+    puts "No releases, since #{ JqueryCdn::VERSION }"
+  else
+    puts "Load jQuery #{tag}"
+    fetch(tag)
 
-  puts "Update gem version"
-  update_version(tag)
+    puts "Update gem version"
+    update_version(tag)
 
-  puts "Done"
+    puts "Done"
+  end
 end
 
 desc 'Delete all generated files'
