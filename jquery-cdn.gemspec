@@ -1,4 +1,4 @@
-require_relative 'lib/jquery-cdn/version'
+require File.expand_path('../lib/jquery-cdn/version', __FILE__)
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
