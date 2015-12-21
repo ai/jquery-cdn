@@ -1,3 +1,3 @@
 module JqueryCdn
-  VERSION = "2.1.4.1"
+  VERSION = "2.1.4.2"
 end
