@@ -6,12 +6,14 @@ require lib.join('version').to_s
 require lib.join('helpers').to_s
 
 module JqueryCdn
+
+  version = JqueryCdn::VERSION.split('.')[0..2].join('.')
   URL = {
-    google:     "//ajax.googleapis.com/ajax/libs/jquery/#{VERSION}/jquery.min.js",
-    microsoft:  "//ajax.aspnetcdn.com/ajax/jQuery/jquery-#{VERSION}.min.js",
-    jquery:     "http://code.jquery.com/jquery-#{VERSION}.min.js",
-    yandex:     "//yandex.st/jquery/#{VERSION}/jquery.min.js",
-    cloudflare: "//cdnjs.cloudflare.com/ajax/libs/jquery/#{VERSION}/jquery.min.js"
+    google:     "//ajax.googleapis.com/ajax/libs/jquery/#{version}/jquery.min.js",
+    microsoft:  "//ajax.aspnetcdn.com/ajax/jQuery/jquery-#{version}.min.js",
+    jquery:     "http://code.jquery.com/jquery-#{version}.min.js",
+    yandex:     "//yandex.st/jquery/#{version}/jquery.min.js",
+    cloudflare: "//cdnjs.cloudflare.com/ajax/libs/jquery/#{version}/jquery.min.js"
   }
 
   # Add assets paths to standalone Sprockets environment.
