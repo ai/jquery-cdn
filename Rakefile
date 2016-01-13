@@ -15,7 +15,7 @@ task :update do
     http = HTTPClient.new
     body = http.get("https://api.github.com/repos/#{repo}/tags").body
     response = JSON.parse(body)
-    response.reject { |i| i['name'] =~ /rc|beta|\+/ }.
+    response.reject { |i| i['name'] =~ /rc|beta|alpha/ }.
              map    { |i| Gem::Version.new(i['name']) }.
              sort
   end
