@@ -162,7 +162,7 @@ because this options can’t work with inline scripts.
 
 ### Fallback
 
-According to Murphy’s Law, even Google CDN may down. So when you write
+According to Murphy’s Law, even Google CDN may go down. So when you write
 `include_jquery`, jQuery CDN inserts:
 
 ```html
