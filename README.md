@@ -1,4 +1,6 @@
-# Best way to load latest jQuery in Ruby
+# DEPRECATED: Best way to load latest jQuery in Ruby
+
+**This project is depreacted. Use Node.js build tools instead of Sprockets.**
 
 Load jQuery from CDN in production and use local copy in development.
 jQuery-CDN supports Ruby on Rails, Sinatra and other non-Rails environments
